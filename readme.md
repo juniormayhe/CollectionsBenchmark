@@ -16,13 +16,13 @@ Intel Core i7-3632QM CPU 2.20GHz (Ivy Bridge), 1 CPU, 8 logical and 4 physical c
   [Host]     : .NET Core 2.2.3 (CoreCLR 4.6.27414.05, CoreFX 4.6.27414.05), 64bit RyuJIT  [AttachedDebugger]
   DefaultJob : .NET Core 2.2.3 (CoreCLR 4.6.27414.05, CoreFX 4.6.27414.05), 64bit RyuJIT
 
-|                                Method |       Mean |      Error |     StdDev |  Ratio | RatioSD | Rank |    Gen 0 |    Gen 1 |    Gen 2 | Allocated |
-|-------------------------------------- |-----------:|-----------:|-----------:|-------:|--------:|-----:|---------:|---------:|---------:|----------:|
-|      Small_Dictionary_PlannedCapacity |   2.846 us |  0.0552 us |  0.0489 us |   0.58 |    0.01 |    1 |   3.5362 |        - |        - |  10.87 KB |
-|      Small_Dictionary_DynamicCapacity |   4.914 us |  0.0585 us |  0.0519 us |   1.00 |    0.00 |    2 |   5.7755 |        - |        - |  17.77 KB |
-|      Large_Dictionary_PlannedCapacity | 503.861 us | 10.6161 us | 25.2304 us | 100.04 |    2.79 |    3 |  95.7031 |  52.2461 |  43.4570 | 550.41 KB |
-| Large_Dictionary_BelowPlannedCapacity | 522.801 us |  6.6485 us |  5.8937 us | 106.40 |    1.84 |    4 | 166.0156 | 110.3516 | 110.3516 | 917.89 KB |
-|      Large_Dictionary_DynamicCapacity | 562.753 us | 10.7677 us | 10.5753 us | 114.55 |    2.51 |    5 | 151.3672 |  90.8203 |  90.8203 | 831.47 KB |
+|                          Method |       Mean |     Error |    StdDev | Ratio | RatioSD | Rank |    Gen 0 |   Gen 1 | Gen 2 | Allocated |
+|-------------------------------- |-----------:|----------:|----------:|------:|--------:|-----:|---------:|--------:|------:|----------:|
+|      Small_List_PlannedCapacity |   1.502 us | 0.0147 us | 0.0137 us |  0.73 |    0.02 |    1 |   2.8172 |       - |     - |   8.66 KB |
+|      Small_List_DynamicCapacity |   2.049 us | 0.0385 us | 0.0396 us |  1.00 |    0.00 |    2 |   3.2387 |       - |     - |   9.96 KB |
+|      Large_List_PlannedCapacity | 170.072 us | 1.9228 us | 1.7045 us | 83.19 |    1.59 |    3 |  93.0176 | 46.3867 |     - | 429.75 KB |
+|      Large_List_DynamicCapacity | 174.647 us | 4.9227 us | 4.3638 us | 85.44 |    2.93 |    4 | 101.5625 | 50.7813 |     - | 518.91 KB |
+| Large_List_BelowPlannedCapacity | 175.155 us | 3.3034 us | 2.9284 us | 85.68 |    2.16 |    4 | 102.2949 | 45.4102 |     - | 490.05 KB |
 ```
 
 ### Dictionaries
