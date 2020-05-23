@@ -10,19 +10,20 @@ Large list: 5000 elements
 - Unplanned lists allocate more memory
 
 ```
-BenchmarkDotNet=v0.11.5, OS=Windows 10.0.17763.503 (1809/October2018Update/Redstone5)
-Intel Core i7-3632QM CPU 2.20GHz (Ivy Bridge), 1 CPU, 8 logical and 4 physical cores
-.NET Core SDK=3.0.100-preview3-010431
-  [Host]     : .NET Core 2.2.3 (CoreCLR 4.6.27414.05, CoreFX 4.6.27414.05), 64bit RyuJIT  [AttachedDebugger]
-  DefaultJob : .NET Core 2.2.3 (CoreCLR 4.6.27414.05, CoreFX 4.6.27414.05), 64bit RyuJIT
+BenchmarkDotNet=v0.12.1, OS=Windows 10.0.18363.836 (1909/November2018Update/19H2)
+AMD Ryzen 5 1600X, 1 CPU, 12 logical and 6 physical cores
+.NET Core SDK=5.0.100-preview.4.20258.7
+  [Host]     : .NET Core 5.0.0 (CoreCLR 5.0.20.25106, CoreFX 5.0.20.25106), X64 RyuJIT
+  DefaultJob : .NET Core 5.0.0 (CoreCLR 5.0.20.25106, CoreFX 5.0.20.25106), X64 RyuJIT
 
-|                          Method |       Mean |     Error |    StdDev | Ratio | RatioSD | Rank |    Gen 0 |   Gen 1 | Gen 2 | Allocated |
-|-------------------------------- |-----------:|----------:|----------:|------:|--------:|-----:|---------:|--------:|------:|----------:|
-|      Small_List_PlannedCapacity |   1.502 us | 0.0147 us | 0.0137 us |  0.73 |    0.02 |    1 |   2.8172 |       - |     - |   8.66 KB |
-|      Small_List_DynamicCapacity |   2.049 us | 0.0385 us | 0.0396 us |  1.00 |    0.00 |    2 |   3.2387 |       - |     - |   9.96 KB |
-|      Large_List_PlannedCapacity | 170.072 us | 1.9228 us | 1.7045 us | 83.19 |    1.59 |    3 |  93.0176 | 46.3867 |     - | 429.75 KB |
-|      Large_List_DynamicCapacity | 174.647 us | 4.9227 us | 4.3638 us | 85.44 |    2.93 |    4 | 101.5625 | 50.7813 |     - | 518.91 KB |
-| Large_List_BelowPlannedCapacity | 175.155 us | 3.3034 us | 2.9284 us | 85.68 |    2.16 |    4 | 102.2949 | 45.4102 |     - | 490.05 KB |
+
+|                          Method |        Mean |       Error |      StdDev | Ratio | RatioSD | Rank |   Gen 0 |   Gen 1 | Gen 2 | Allocated |
+|-------------------------------- |------------:|------------:|------------:|------:|--------:|-----:|--------:|--------:|------:|----------:|
+|      Small_List_PlannedCapacity |    829.8 ns |    15.40 ns |    20.03 ns |  0.69 |    0.02 |    1 |  2.1172 |       - |     - |   8.65 KB |
+|      Small_List_DynamicCapacity |  1,217.2 ns |     5.58 ns |     4.95 ns |  1.00 |    0.00 |    2 |  2.4357 |       - |     - |   9.95 KB |
+|      Large_List_PlannedCapacity | 60,526.5 ns | 1,190.68 ns | 1,274.01 ns | 49.68 |    1.25 |    3 | 79.3457 | 27.5879 |     - | 429.74 KB |
+| Large_List_BelowPlannedCapacity | 87,090.9 ns |   978.17 ns |   816.82 ns | 71.57 |    0.63 |    4 | 93.5059 | 40.8936 |     - | 490.04 KB |
+|      Large_List_DynamicCapacity | 92,385.2 ns |   792.93 ns |   662.14 ns | 75.92 |    0.54 |    5 | 95.0928 | 47.4854 |     - | 518.91 KB |
 ```
 
 ### Dictionaries
@@ -31,13 +32,13 @@ Intel Core i7-3632QM CPU 2.20GHz (Ivy Bridge), 1 CPU, 8 logical and 4 physical c
 - Unplanned dictionaries allocates more memory
 
 ```
-|                                Method |       Mean |      Error |     StdDev |  Ratio | RatioSD | Rank |    Gen 0 |    Gen 1 |    Gen 2 | Allocated |
-|-------------------------------------- |-----------:|-----------:|-----------:|-------:|--------:|-----:|---------:|---------:|---------:|----------:|
-|      Small_Dictionary_PlannedCapacity |   2.846 us |  0.0552 us |  0.0489 us |   0.58 |    0.01 |    1 |   3.5362 |        - |        - |  10.87 KB |
-|      Small_Dictionary_DynamicCapacity |   4.914 us |  0.0585 us |  0.0519 us |   1.00 |    0.00 |    2 |   5.7755 |        - |        - |  17.77 KB |
-|      Large_Dictionary_PlannedCapacity | 503.861 us | 10.6161 us | 25.2304 us | 100.04 |    2.79 |    3 |  95.7031 |  52.2461 |  43.4570 | 550.41 KB |
-| Large_Dictionary_BelowPlannedCapacity | 522.801 us |  6.6485 us |  5.8937 us | 106.40 |    1.84 |    4 | 166.0156 | 110.3516 | 110.3516 | 917.89 KB |
-|      Large_Dictionary_DynamicCapacity | 562.753 us | 10.7677 us | 10.5753 us | 114.55 |    2.51 |    5 | 151.3672 |  90.8203 |  90.8203 | 831.47 KB |
+|                                Method |       Mean |     Error |    StdDev |  Ratio | RatioSD | Rank |    Gen 0 |    Gen 1 |    Gen 2 | Allocated |
+|-------------------------------------- |-----------:|----------:|----------:|-------:|--------:|-----:|---------:|---------:|---------:|----------:|
+|      Small_Dictionary_PlannedCapacity |   1.500 us | 0.0299 us | 0.0492 us |   0.61 |    0.02 |    1 |   2.6588 |        - |        - |  10.87 KB |
+|      Small_Dictionary_DynamicCapacity |   2.520 us | 0.0333 us | 0.0295 us |   1.00 |    0.00 |    2 |   4.3449 |        - |        - |  17.77 KB |
+|      Large_Dictionary_PlannedCapacity | 318.795 us | 6.2616 us | 5.8571 us | 126.64 |    2.74 |    3 |  86.9141 |  43.4570 |  43.4570 | 550.41 KB |
+| Large_Dictionary_BelowPlannedCapacity | 334.271 us | 5.0805 us | 4.2425 us | 132.62 |    1.66 |    4 | 166.5039 | 110.8398 | 110.8398 | 917.89 KB |
+|      Large_Dictionary_DynamicCapacity | 354.500 us | 7.0372 us | 7.8218 us | 140.04 |    3.22 |    5 | 151.3672 |  90.8203 |  90.8203 | 831.47 KB |
 ```
 
 ## Arrays
@@ -48,18 +49,18 @@ Intel Core i7-3632QM CPU 2.20GHz (Ivy Bridge), 1 CPU, 8 logical and 4 physical c
 - Allocate small (or large) primitive type arrays with StackAlloc or Span are faster
 
 ```
-|                              Method |          Mean |      Error |     StdDev |        Median |  Ratio | RatioSD | Rank |   Gen 0 | Gen 1 | Gen 2 | Allocated |
-|------------------------------------ |--------------:|-----------:|-----------:|--------------:|-------:|--------:|-----:|--------:|------:|------:|----------:|
-|    Large_Primitive_UnsafeStackAlloc |     0.0000 ns |  0.0000 ns |  0.0000 ns |     0.0000 ns |  0.000 |    0.00 |    1 |       - |     - |     - |         - |
-|    Small_Primitive_UnsafeStackAlloc |     0.0055 ns |  0.0065 ns |  0.0058 ns |     0.0042 ns |  0.000 |    0.00 |    2 |       - |     - |     - |         - |
-|      Small_Primitive_SpanStackAlloc |     1.3331 ns |  0.0397 ns |  0.0371 ns |     1.3331 ns |  0.035 |    0.00 |    3 |       - |     - |     - |         - |
-|      Large_Primitive_SpanStackAlloc |     6.3109 ns |  0.0575 ns |  0.0510 ns |     6.3217 ns |  0.167 |    0.00 |    4 |       - |     - |     - |         - |
-|               Small_Primitive_Array |    37.7743 ns |  0.3208 ns |  0.2679 ns |    37.7637 ns |  1.000 |    0.00 |    5 |  0.1348 |     - |     - |     424 B |
-|     Large_Primitive_SharedArrayPool |    47.5122 ns |  0.3284 ns |  0.2911 ns |    47.5025 ns |  1.256 |    0.01 |    6 |       - |     - |     - |         - |
-| Small_ReferenceType_SharedArrayPool |    52.2805 ns |  0.7781 ns |  0.6498 ns |    52.1534 ns |  1.384 |    0.02 |    7 |       - |     - |     - |         - |
-| Large_ReferenceType_SharedArrayPool |    53.0677 ns |  0.4761 ns |  0.4221 ns |    52.9884 ns |  1.406 |    0.02 |    7 |       - |     - |     - |         - |
-|     Small_Primitive_SharedArrayPool |    58.9349 ns |  1.1926 ns |  1.1155 ns |    58.7923 ns |  1.562 |    0.03 |    8 |       - |     - |     - |         - |
-|           Small_ReferenceType_Array |    80.7801 ns |  1.7554 ns |  1.8027 ns |    80.2140 ns |  2.142 |    0.06 |    9 |  0.2619 |     - |     - |     824 B |
-|               Large_Primitive_Array | 1,581.4661 ns | 12.9802 ns | 11.5066 ns | 1,576.3062 ns | 41.847 |    0.39 |   10 |  6.3686 |     - |     - |   20024 B |
-|           Large_ReferenceType_Array | 3,248.0881 ns | 32.1773 ns | 30.0987 ns | 3,244.3077 ns | 86.084 |    0.84 |   11 | 12.6572 |     - |     - |   40024 B |
+|                              Method |        Mean |      Error |     StdDev |      Median |  Ratio | RatioSD | Rank |  Gen 0 | Gen 1 | Gen 2 | Allocated |
+|------------------------------------ |------------:|-----------:|-----------:|------------:|-------:|--------:|-----:|-------:|------:|------:|----------:|
+|    Small_Primitive_UnsafeStackAlloc |   0.0001 ns |  0.0005 ns |  0.0004 ns |   0.0000 ns |  0.000 |    0.00 |    1 |      - |     - |     - |         - |
+|    Large_Primitive_UnsafeStackAlloc |   0.0008 ns |  0.0020 ns |  0.0016 ns |   0.0000 ns |  0.000 |    0.00 |    1 |      - |     - |     - |         - |
+|      Small_Primitive_SpanStackAlloc |  12.9849 ns |  0.0264 ns |  0.0220 ns |  12.9946 ns |  0.793 |    0.00 |    2 |      - |     - |     - |         - |
+|               Small_Primitive_Array |  16.3722 ns |  0.0751 ns |  0.0666 ns |  16.3944 ns |  1.000 |    0.00 |    3 | 0.1014 |     - |     - |     424 B |
+|     Small_Primitive_SharedArrayPool |  21.1541 ns |  0.0402 ns |  0.0356 ns |  21.1599 ns |  1.292 |    0.00 |    4 |      - |     - |     - |         - |
+|     Large_Primitive_SharedArrayPool |  21.2913 ns |  0.1885 ns |  0.1472 ns |  21.2548 ns |  1.301 |    0.01 |    4 |      - |     - |     - |         - |
+| Large_ReferenceType_SharedArrayPool |  24.0799 ns |  0.1087 ns |  0.0908 ns |  24.0814 ns |  1.471 |    0.01 |    5 |      - |     - |     - |         - |
+| Small_ReferenceType_SharedArrayPool |  24.3184 ns |  0.4524 ns |  0.4232 ns |  24.0522 ns |  1.486 |    0.02 |    5 |      - |     - |     - |         - |
+|           Small_ReferenceType_Array |  29.8450 ns |  0.3949 ns |  0.3501 ns |  29.7395 ns |  1.823 |    0.03 |    6 | 0.1970 |     - |     - |     824 B |
+|               Large_Primitive_Array | 530.2019 ns |  3.3555 ns |  2.9746 ns | 529.7078 ns | 32.385 |    0.20 |    7 | 4.7617 |     - |     - |   20024 B |
+|      Large_Primitive_SpanStackAlloc | 679.9406 ns |  1.8343 ns |  1.6261 ns | 680.4270 ns | 41.531 |    0.18 |    8 |      - |     - |     - |         - |
+|           Large_ReferenceType_Array | 990.5360 ns | 13.2352 ns | 11.0520 ns | 991.8528 ns | 60.523 |    0.83 |    9 | 9.5234 |     - |     - |   40024 B |
 ```
