@@ -8,9 +8,9 @@
     {
         static void Main(string[] args)
         {
-            BenchmarkRunner.Run<Lists>();
+            //BenchmarkRunner.Run<Lists>();
             //BenchmarkRunner.Run<Dictionaries>();
-            //BenchmarkRunner.Run<Arrays>();
+            BenchmarkRunner.Run<Arrays>();
 
             Console.WriteLine("done!");
             Console.ReadLine();
